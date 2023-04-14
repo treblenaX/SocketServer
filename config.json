@@ -1,0 +1,7 @@
+{
+    "title": "TCP/UDP Socket Server",
+    "files": {
+        "tcp.md": "TCP Socket Functionality",
+        "udp.md": "UDP Socket Functionality"
+    }
+}
