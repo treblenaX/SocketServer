@@ -1,7 +1,8 @@
 {
     "title": "TCP/UDP Socket Server",
     "files": {
-        "tcp.md": "TCP Socket Functionality",
-        "udp.md": "UDP Socket Functionality"
+        "markdown/tcp.md": "TCP Socket Functionality",
+        "markdown/udp.md": "UDP Socket Functionality",
+        "markdown/ec.md": "Server Critera Checks"
     }
 }
