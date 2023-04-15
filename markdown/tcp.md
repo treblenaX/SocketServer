@@ -17,47 +17,27 @@ These are the RFC 865 specifications for a QOTD server:
 
 >Notice below...
 >
->How the each request the server sends (and the client receives) a different Princess Bride quote!
+>How the each request the server sends (and the client receives) a different Princess Bride and/or Monty Python quote!
 
-# Client's Experience
+# Client's Experience - `nc localhost 17`
 
-    (base) Elberts-MacBook-Pro:SocketClient elbertcheng$ java TCPClient.java 10.19.80.12 17
-    Log level: SEVERE
+    elbertcheng$ nc localhost 17
+    Miracle Max: Go away or I'll call the Brute Squad.
+    Fezzik: I'm on the Brute Squad.
+    elbertcheng$ nc localhost 17
+    Buttercup: We'll never survive.
+    Westley: Nonsense. You're only saying that because no one ever has.
+    elbertcheng$ nc localhost 17
+    In 1983 Monty Python lay in ruins....
 
-    Prince Humperdinck: [sincerely] Tyrone, you know how much I love watching you work, but I've got my country's 500th anniversary to plan, my wedding to arrange, my wife to murder and Guilder to frame for it; I'm swamped.
-    Count Rugen: Get some rest. If you haven't got your health, then you haven't got anything.
 
-    (base) Elberts-MacBook-Pro:SocketClient elbertcheng$ java TCPClient.java 10.19.80.12 17
-    Log level: SEVERE
+# Server's Experience - `javac ./threads/*.java ; javac ./*.java ; java SocketServer.java`
 
-    Inigo Montoya: Hello! My name is Inigo Montoya! You killed my father! Prepare to die!
-
-# Server's Experience 
-
-    (base) Elberts-MacBook-Pro:SocketServer elbertcheng$ javac ./*.java ./threads/*.java ; java SocketServer -i
-    Log level: INFO
-    Welcome to the server application! The server listens on port 17 as specified by RFC 865.
-
-    Apr 13, 2023 11:44:58 PM SocketServer main
-    INFO: Server started on port 17.
-    Apr 13, 2023 11:45:01 PM threads.TCPSocket <init>
-    INFO: [10.19.80.12]  - CONNECTED!
-    Apr 13, 2023 11:45:01 PM threads.TCPSocket run
-    INFO: [10.19.80.12]  - SENDING: Prince Humperdinck: [sincerely] Tyrone, you know how much I love watching you work, but I've got my country's 500th anniversary to plan, my wedding to arrange, my wife to murder and Guilder to frame for it; I'm swamped.
-    Count Rugen: Get some rest. If you haven't got your health, then you haven't got anything.
-    Apr 13, 2023 11:45:01 PM threads.TCPSocket run
-    INFO: [10.19.80.12]  - CLOSING THREAD!
-    Apr 13, 2023 11:45:01 PM threads.TCPSocket run
-    INFO: [10.19.80.12]  - CLOSED!
-
-    Apr 13, 2023 11:45:02 PM threads.TCPSocket <init>
-    INFO: [10.19.80.12]  - CONNECTED!
-    Apr 13, 2023 11:45:02 PM threads.TCPSocket run
-    INFO: [10.19.80.12]  - SENDING: Inigo Montoya: Hello! My name is Inigo Montoya! You killed my father! Prepare to die!
-    Apr 13, 2023 11:45:02 PM threads.TCPSocket run
-    INFO: [10.19.80.12]  - CLOSING THREAD!
-    Apr 13, 2023 11:45:02 PM threads.TCPSocket run
-    INFO: [10.19.80.12]  - CLOSED!
+    [TCP/0:0:0:0:0:0:0:1] MESSAGE SENT: Miracle Max: Go away or I'll call the Brute Squad.
+    Fezzik: I'm on the Brute Squad.
+    [TCP/0:0:0:0:0:0:0:1] MESSAGE SENT: Buttercup: We'll never survive.
+    Westley: Nonsense. You're only saying that because no one ever has.
+    [TCP/0:0:0:0:0:0:0:1] MESSAGE SENT: In 1983 Monty Python lay in ruins....
 
 
 
