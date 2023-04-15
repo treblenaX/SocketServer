@@ -2,42 +2,33 @@ import java.util.concurrent.*;
 import java.io.*;
 import java.net.*;
 import java.util.logging.*;
-import threads.TCPSocket;
+import threads.*;
 
 public class SocketServer {
     private static final Logger LOGGER = Logger.getLogger(SocketServer.class.getName());
+    private static int PORT = 17;
     public static void main(String[] args) {
-        int port = Integer.parseInt(args[0]);
-        String flag = (args.length > 1) ? args[1].toLowerCase() : "";
+        String flag = (args.length > 0) ? args[0].toLowerCase() : "";
 
         switch (flag) {
             case "-i":
                 LOGGER.setLevel(Level.INFO);
                 printLogLevel();
                 break;
-            case "-f":
-                LOGGER.setLevel(Level.FINE);
-                printLogLevel();
-                break;
             default:
                 LOGGER.setLevel(Level.SEVERE);
                 break;
         }
+
+        LOGGER.info("CREATED - ExecutorService");
         ExecutorService executor = Executors.newFixedThreadPool(5);
+        QuoteService quoteService = new QuoteService(LOGGER.getLevel());
+        quoteService.loadQuoteFromFile("./threads/MontyPythonQuotes.txt");
+        quoteService.loadQuoteFromFile("./threads/PrincessBrideQuotes.txt");
 
-        try {
-            ServerSocket server = new ServerSocket(port);
-            LOGGER.info("Server started on port " + port);
-
-            // Handle socket connection
-            do {
-                Socket client = server.accept();
-                Thread TCPThread = new TCPSocket(client, LOGGER.getLevel());
-                executor.execute(TCPThread);
-            } while (true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        LOGGER.info("EXECUTE - TCPThread");
+        executor.execute(new TCPThread(LOGGER.getLevel(), PORT, executor, quoteService));
+        executor.execute(new UDPThread(LOGGER.getLevel(), PORT, executor, quoteService));
     }
 
     private static void printLogLevel() {
