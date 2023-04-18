@@ -1,13 +1,7 @@
 package threads;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,7 +12,6 @@ public class QuoteService {
     private final Logger LOGGER = Logger.getLogger(QuoteService.class.getName());
     private List<String> quotesList;
     private Random rand;
-    private String name;
 
     public QuoteService(Level level) {
         super();

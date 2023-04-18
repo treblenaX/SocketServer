@@ -6,21 +6,16 @@ import java.util.*;
 import java.util.concurrent.Executor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-
-import threads.QuoteService;
 
 public class TCPThread extends Thread {
     private static final Logger LOGGER = Logger.getLogger(TCPThread.class.getName());
     private String name;
     private Executor executor;
     private ServerSocket serverSocket;
-    private Random random;
     private QuoteService quoteService;
 
     public TCPThread(Level level, int port, Executor executor, QuoteService quoteService) {
         this.name = "[" + TCPThread.class.getName() + "]";
-        this.random =  new Random();
         this.executor = executor;
         this.quoteService = quoteService;
         LOGGER.setLevel(level);

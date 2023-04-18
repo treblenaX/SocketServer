@@ -2,26 +2,20 @@ package threads;
 
 import java.io.*;
 import java.net.*;
-import java.util.*;
 import java.util.concurrent.Executor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-
-import threads.QuoteService;
 
 public class UDPThread extends Thread {
     private static final Logger LOGGER = Logger.getLogger(UDPThread.class.getName());
     private String name;
     private Executor executor;
     private DatagramSocket socket;
-    private Random random;
     private QuoteService quoteService;
     private byte[] buf = new byte[512];
 
     public UDPThread(Level level, int port, Executor executor, QuoteService quoteService) {
         this.name = "[" + UDPThread.class.getName() + "]";
-        this.random =  new Random();
         this.executor = executor;
         this.quoteService = quoteService;
         LOGGER.setLevel(level);
