@@ -94,7 +94,7 @@ These are the RFC 865 specifications for a QOTD server:
     [UDP/0:0:0:0:0:0:0:1] MESSAGE SENT: Man in Black: I do not envy you the headache you will have when you awake. But for now, rest well and dream of large women.
 </details>
 <details>
-                <summary>Server Critera Checks</summary>
+                <summary>Server Criteria Checks</summary>
                     
 # Client's Experience
 `nc localhost 17` is NetCat's tool for a TCP connection
