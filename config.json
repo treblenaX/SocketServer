@@ -3,6 +3,6 @@
     "files": {
         "markdown/tcp.md": "TCP Socket Functionality",
         "markdown/udp.md": "UDP Socket Functionality",
-        "markdown/ec.md": "Server Critera Checks"
+        "markdown/ec.md": "Server Criteria Checks"
     }
 }
