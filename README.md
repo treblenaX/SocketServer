@@ -107,7 +107,7 @@ These are the RFC 865 specifications for a QOTD server:
     Buttercup: We'll never survive.
     Westley: Nonsense. You're only saying that because no one ever has.
 
->Notice... The server outputs a different quote on reach request. 
+>Notice... The server outputs a different quote on each request. I chose "Monty Python" for my favorite movie quote!
 
     elbertcheng$ nc localhost 17
     In 1983 Monty Python lay in ruins....
@@ -116,7 +116,7 @@ These are the RFC 865 specifications for a QOTD server:
     elbertcheng$ nc localhost 17
     What a *senseless* waste of human life.
 
->Notice... SocketServer supports both TCP and UDP connections on port 17.
+>Notice... SocketServer supports both TCP and UDP connections on port 17 and they are not separate applications. They are both executed under `SocketServer.java`. At any point in time while the server is active, it can handle TCP and UDP requests simultaneously.
 
     elbertcheng$ nc localhost 17
     I want to buy some cheese.
